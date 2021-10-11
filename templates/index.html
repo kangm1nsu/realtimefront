@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<body>
+    <h1>전날 뉴스 모니터링</h1>
+
+    <div id="news-box"></div>
+
+    <script>
+        eventSource.onmessage = (event)=>{
+            
+            datas = JSON.parse(event.data);
+            console.log(datas);
+            $("#news-box").append("<p>" + datas.title + "</p>");
+            
+        }
+
+    </script>
+
+
+</body>
+</html>
