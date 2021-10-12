@@ -8,21 +8,24 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
-    <h1>전날 뉴스 모니터링</h1>
-
-    <div id="news-box"></div>
-
+    <h1>네이버 뉴스 수집 데이터 모니터링</h1>
+    <hr>
+    <div id="news-box">
+        
+        
+    </div>
     <script>
+        const eventSource = new EventSource("http://localhost:8080/naverNews")
+        
         eventSource.onmessage = (event)=>{
-            
+            //console.log(event.data);
             datas = JSON.parse(event.data);
             console.log(datas);
             $("#news-box").append("<p>" + datas.title + "</p>");
-            
+            //document.querySelector("#news-box").append("<p>" + datas.title + "</p>");
+           
         }
-
+    
     </script>
-
-
 </body>
 </html>
